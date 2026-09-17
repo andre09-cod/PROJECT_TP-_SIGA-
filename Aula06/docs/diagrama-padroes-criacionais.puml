@@ -1,0 +1,82 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+title SIGA - Padrões Criacionais
+
+interface Conexao {
+  +abrir(): void
+}
+
+interface Comando {
+  +executar(sql: String): void
+}
+
+interface FabricaBanco {
+  +criarConexao(): Conexao
+  +criarComando(): Comando
+}
+
+class FabricaMySQL
+class FabricaPostgreSQL
+class ConexaoMySQL
+class ComandoMySQL
+class ConexaoPostgreSQL
+class ComandoPostgreSQL
+
+FabricaBanco <|.. FabricaMySQL
+FabricaBanco <|.. FabricaPostgreSQL
+Conexao <|.. ConexaoMySQL
+Conexao <|.. ConexaoPostgreSQL
+Comando <|.. ComandoMySQL
+Comando <|.. ComandoPostgreSQL
+
+FabricaMySQL ..> ConexaoMySQL : cria
+FabricaMySQL ..> ComandoMySQL : cria
+FabricaPostgreSQL ..> ConexaoPostgreSQL : cria
+FabricaPostgreSQL ..> ComandoPostgreSQL : cria
+
+class ConsultaBuilder {
+  -tabela: String
+  -filtro: String
+  -ordenacao: String
+  -limite: int
+  -offset: int
+  -timeoutSegundos: int
+  -somenteAtivos: boolean
+  +paraTabela(tabela: String): ConsultaBuilder
+  +comFiltro(filtro: String): ConsultaBuilder
+  +comOrdenacao(ordenacao: String): ConsultaBuilder
+  +comLimite(limite: int): ConsultaBuilder
+  +comOffset(offset: int): ConsultaBuilder
+  +comTimeout(timeoutSegundos: int): ConsultaBuilder
+  +somenteAtivos(): ConsultaBuilder
+  +construir(): String
+}
+
+class AcessoDados <<Singleton>> {
+  -instancia: AcessoDados
+  -AcessoDados()
+  +getInstancia(): AcessoDados
+  +conectar(fabrica: FabricaBanco): void
+  +executarConsulta(fabrica: FabricaBanco, consulta: String): void
+}
+
+AcessoDados ..> FabricaBanco : utiliza
+AcessoDados ..> ConsultaBuilder : usa resultado
+
+note right of FabricaBanco
+Abstract Factory
+Famílias coerentes
+end note
+
+note right of ConsultaBuilder
+Builder
+Construção passo a passo
+end note
+
+note right of AcessoDados
+Singleton
+Uma única instância
+end note
+
+@enduml
