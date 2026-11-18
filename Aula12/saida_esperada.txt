@@ -1,0 +1,22 @@
+=== SIGA - Aula 12: Strategy e Observer (codigo refatorado) ===
+
+1) Desconto decidido em UM so lugar (Strategy)
+   Maria Silva    matricula: R$ 400.00 | boleto: R$ 400.00 | iguais: true
+   [boleto] Maria Silva: R$ 400.00
+   Ana Pereira    matricula: R$ 720.00 | boleto: R$ 720.00 | iguais: true
+   [boleto] Ana Pereira: R$ 720.00
+
+2) Reacoes a matricula via publicador (Observer)
+   [e-mail] confirmacao para Maria Silva
+   [painel] vagas de DSM-2A atualizadas
+   [auditoria] MATRICULA - 2024001
+   [biblioteca] cadastro criado para Maria Silva
+
+   Agora com a turma lotada, e o aviso a coordenacao falhando:
+   [e-mail] confirmacao para Ana Pereira
+   [painel] vagas de DSM-2B atualizadas
+   [erro] AvisoCoordenacao: servico de aviso indisponivel para DSM-2B
+   [auditoria] MATRICULA - 2024003
+   [biblioteca] cadastro criado para Ana Pereira
+   >> A falha do aviso foi registrada, e a auditoria (que vem depois) executou.
+   Matriculas gravadas: 2
