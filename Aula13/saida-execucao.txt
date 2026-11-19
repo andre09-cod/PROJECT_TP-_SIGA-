@@ -1,0 +1,28 @@
+=== SIGA - Aula 13: Strategy e Observer ===
+
+1) Strategy: matrícula e boleto usam a mesma política
+   Maria Silva    matricula: R$ 400.00
+   [boleto] Maria Silva: R$ 400.00
+   Joao Souza     matricula: R$ 640.00
+   [boleto] Joao Souza: R$ 640.00
+   Ana Pereira    matricula: R$ 720.00
+   [boleto] Ana Pereira: R$ 720.00
+   Carlos Lima    matricula: R$ 800.00
+   [boleto] Carlos Lima: R$ 800.00
+
+2) Observer: reações independentes à matrícula
+
+   Matrícula em turma normal:
+   [e-mail] confirmacao para Maria Silva
+   [painel] vagas de DSM-2A atualizadas
+   [auditoria] MATRICULA - 2024001
+   [SMS] aviso de matricula enviado para Maria Silva
+
+   Matrícula em turma lotada (aviso falha, auditoria e SMS continuam):
+   [e-mail] confirmacao para Ana Pereira
+   [painel] vagas de DSM-2B atualizadas
+   [aviso] uma reação falhou: servico de aviso indisponivel para DSM-2B
+   [auditoria] MATRICULA - 2024003
+   [SMS] aviso de matricula enviado para Ana Pereira
+
+   Total de matrículas registradas: 2

@@ -1,0 +1,52 @@
+=== SIGA - Aula 11: Decorator e Composite (codigo refatorado) ===
+
+1) Relatorios: decoradores empilhados sobre a mesma classe base
+   --- RelatorioDeAlunos (sem decoradores) ---
+   Maria Silva
+   Joao Souza
+   Ana Pereira
+   --- Cabecalho(Numeracao(Alunos)) ---
+   FATEC DE PORTO FERREIRA
+   Sistema de Gestao Academica
+   ---
+   1: Maria Silva
+   2: Joao Souza
+   3: Ana Pereira
+   --- MarcaDagua(Cabecalho(Numeracao(Alunos))) ---
+   FATEC DE PORTO FERREIRA
+   Sistema de Gestao Academica
+   ---
+   1: Maria Silva
+   2: Joao Souza
+   3: Ana Pereira
+   *** RASCUNHO — NAO E DOCUMENTO OFICIAL ***
+   --- MarcaDagua(Alunos) ---
+   Maria Silva
+   Joao Souza
+   Ana Pereira
+   *** RASCUNHO — NAO E DOCUMENTO OFICIAL ***
+
+2) Estrutura curricular tratada de modo uniforme (Composite)
+  [DSM - Desenvolvimento de Software Multiplataforma]
+    [1o semestre]
+      Algoritmos (80h)
+      Banco de Dados I (60h)
+    [2o semestre]
+      Tecnicas de Programacao II (80h)
+      Desenvolvimento Web II (80h)
+    Projeto Integrador (40h)
+   Carga total: 340h
+
+3) Mesma estrutura, agora com um submodulo de terceiro nivel
+  [DSM - Desenvolvimento de Software Multiplataforma]
+    [1o semestre]
+      Algoritmos (80h)
+      Banco de Dados I (60h)
+    [2o semestre]
+      Tecnicas de Programacao II (80h)
+      Desenvolvimento Web II (80h)
+      [Optativas do 2o semestre]
+        Ingles Tecnico (40h)
+        Computacao em Nuvem (40h)
+    Projeto Integrador (40h)
+   Carga total: 420h
